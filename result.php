@@ -1,54 +1,85 @@
-<body>
+<!--    
+    THIS IS WHAT I USED TO CHECK IF THE INFO WAS SAVED IN A PROPER WAY
 
-    <?php include 'inc/header.php'; ?>
+    echo "This is the answer : " . $_SESSION['question1'] ."<br>"; 
+    echo "This is the answer : " . $_SESSION['question2']."<br>";
+    echo "This is the answer : " . $_SESSION['question3']."<br>";
+    echo "This is the answer : " . $_SESSION['question4']."<br>";
+    echo "This is the answer : " . $_SESSION['question5']."<br>";
+    echo "This is the answer : " . $_SESSION['question6']."<br>";
+    echo "This is the answer : " . $_SESSION['question7']."<br>";
+    echo "This is the answer : " . $_SESSION['question8']."<br>";
+    echo "This is the answer : " . $_SESSION['question9']."<br>";
+    echo "This is the answer : " . $_SESSION['question10']."<br>";
 
-    <div class="title-rs">
-        <p>Welcome <?php echo $_POST["name"]; ?></p>
-        <br><br>
-    </div>
+    echo "ESTA ES EL TEXTO " . $_SESSION['question4text']."<br>"; 
 
-    <div class="text-rs">
-
-        <?php
-        session_start();
-
-        $age = $_POST["age"];
-        $color = $_POST["color"];
-
-        $_SESSION["age"] = $age;
-        $_SESSION["color"] = $color;
-
-        //?????? WHAT THE FUCK
-        $_SESSION["last-post"] = $_POST;
+-->
 
 
-        echo "Your age is: " . $age;
-        echo "<br>";
-
-        include "inc/utils.php";
-
-        printAgeImageTag();
-        echo "<br>";
-        echo "<br>";
-
-        echo "Your favourite color is: " . $color;
-        echo "<br>";
-
-        echo "<div style = 'width:50px; height:50px; background-color:$color;' ></div>";
-
-        echo "<a href = 'color.php;' >Next</a>";
-
-        echo "<br>";
-        echo "<br>";
-        ?>
-
-        Your email adress is: <?php echo $_POST["email"]; ?><br><br>
-
-    </div>
-
-    <?php include 'inc/footer.php'; ?>
+<?php include 'inc/header.php'; 
+$_SESSION['question10']=$_POST['question10'];
+?>
 
 
-</body>
+<?php 
 
 
+
+
+
+
+
+
+    $a=array($_SESSION['question1'],$_SESSION['question2'],$_SESSION['question3'],$_SESSION['question5'],$_SESSION['question6'],$_SESSION['question7'],$_SESSION['question8'],$_SESSION['question9'],$_SESSION['question10']);
+    //echo "esta es la suma de todo " .array_sum($a);
+
+
+    
+    if (array_sum($a) < 5)
+    {
+        echo "<h1 class='mb-3 text-center texto-up'>You should improve your health routines</h1>";
+        
+    }
+    else {
+        echo "<h1 class='mb-3 text-center texto-up'>You are in a good shape</h1>";
+    }
+
+    
+
+    include 'inc/utils.php';
+    printAgeImageTag();
+    echo "<br>";
+    
+
+
+?>
+
+<div class="text-blue text-center">
+    <h4 class="mb-3">Press the button twice to delete session</h4>
+</div>
+<div class="text-center button">
+    <form action="result.php" method="POST">
+        <button class="btn btn-primary" type="submit"name="delete" >Delete</button>
+    </form>
+</div>
+
+<div class="text-center button">
+    <a href="index.php">
+        <button class="btn btn-primary">Home</button>
+    </a>
+    <a href="contact.php">
+        <button class="btn btn-primary">Contact</button>
+    </a>
+</div>
+
+
+
+<?php 
+if(isset($_POST['delete'])){
+
+session_destroy();
+}
+?>
+
+<?php include 'inc/footer.php';?>
