@@ -36,11 +36,15 @@ $_SESSION['question10']=$_POST['question10'];
 
 
     
-    if (array_sum($a) < 5)
+    if (array_sum($a)<1)
     {
-        echo "<h1 class='mb-3 text-center texto-up'>You should improve your health routines</h1>";
+        echo "<h1 class='mb-3 text-center texto-up'>Welcome</h1>";
         
     }
+    else if (array_sum($a) <5){
+        echo "<h1 class='mb-3 text-center texto-up'>You should improve your health routines</h1>";
+    }
+
     else {
         echo "<h1 class='mb-3 text-center texto-up'>You are in a good shape</h1>";
     }
